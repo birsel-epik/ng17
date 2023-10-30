@@ -14,5 +14,7 @@ import { Defer2Component } from "../../components/defer-2/defer-2.component";
 export class HomeCmsComponent {
   sinyal = signal(false)
 
+  num = signal(10)
+
   isCheckedDefer = signal(false);
 }

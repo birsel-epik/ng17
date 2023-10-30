@@ -1,4 +1,47 @@
-<p>Angular: new control flows with new syntax:</p>
+<h2><strong>Angular new control flows with new syntax:</strong></h2>
+
+<p><strong>&#64;if - &#64;else</strong> <br>
+    Angularda döngü ve koşul yazmanın yeni şekli diyebiliriz. *ngFor *ngif gibi `structural directive`ler hala kullanılabiliyor. Bu yeni gelen yapılar sadece yeni kullanıcı dostu-“beginner-friendly” hale getiriyor.
+   </p> 
+   <br>
+    @if (sinyal()) {
+    <div>Gel</div>
+    }
+    @else {
+    <div>Git</div>
+    }
+    
+    <br><hr><br>
+
+    <p>&#64;switch - &#64;case</p> 
+    <br>
+    @switch (sinyal())
+    {
+    @case (true) {
+        Doğru
+    }
+    
+    @case (false) {
+        Yanlış
+    }
+    }
+    <br>
+    <br>
+
+    @if(num() === 0) {
+        <h2>Sıfır</h2>        
+    }
+    @else if (num() %2) {
+        <h3>Çift Sayı</h3>
+    } @else {
+        <h3 class="text-danger">Tek Sayı</h3>
+    }
+    
+    <br>
+    <br>
+    <button (click)="sinyal.set(!sinyal())" class="btn btn-primary">Toggle</button>
+
+
     <br><br>
 
     <h3>&#64;defer when</h3>
@@ -91,30 +134,3 @@
     <br><hr><br>
 
 
-   <p>&#64;if - &#64;else</p> 
-   <br>
-@if (sinyal()) {
-    <div>Gel</div>
-    }
-    @else {
-    <div>Git</div>
-    }
-    
-    <br><hr><br>
-    
-    <p>&#64;switch - &#64;case</p> 
-    <br>
-    @switch (sinyal())
-    {
-    @case (true) {
-        Doğru
-    }
-    
-    @case (false) {
-        Yanlış
-    }
-    }
-    
-    <br>
-    <br>
-    <button (click)="sinyal.set(!sinyal())" class="btn btn-primary">Toggle</button>
