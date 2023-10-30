@@ -1,0 +1,120 @@
+<p>Angular: new control flows with new syntax:</p>
+    <br><br>
+
+    <h3>&#64;defer when</h3>
+
+    <div>
+        <input type="checkbox" #checkboxDefer [checked]="isCheckedDefer()" (change)="isCheckedDefer.set(checkboxDefer.checked)" id="checkboxDefer" />
+        <label for="checkboxDefer">Open the network tab of the browser's developer tools, then check this checkbox to load the <strong>app-c1</strong> component</label>
+    </div>
+
+    <br>
+
+    @defer (when isCheckedDefer()) {
+        <app-defer/>
+    }
+
+    @placeholder {
+        <span>Placeholder</span>
+    }
+    @error {
+        <span>error</span>  
+    }
+    @loading(minimum 1s) {
+        <span>Loading...</span>
+    }
+
+    <br><hr><br>
+
+    <h3>&#64;defer in interaction</h3>
+    @defer (on interaction) {
+        <span>Clicked</span>
+    }
+    @placeholder {
+        <span>Placeholder (click on it!)</span>
+    }
+
+    <br><hr><br>
+
+
+    <h3>&#64;defer on hover</h3>
+    @defer (on hover) {
+        <span>Hovered</span>
+    }
+    @placeholder {
+        <span>Placeholder (hover it!)</span>
+    }
+
+
+    <br><hr><br>
+
+    <h3>&#64;defer on idle</h3>
+    @defer (on idle) {
+        <span>Browser has reached an idle state</span>
+    }
+    @placeholder {
+        <span>Placeholder</span>
+    }
+
+
+    <br><hr><br>
+
+    <h3>&#64;defer on timer(5s)</h3>
+    @defer (on timer(5s)) {
+        <span>Visible after 5s</span>
+    }
+    @placeholder {
+        <span>Placeholder</span>
+    }
+
+
+    <br><hr><br>
+    <h3>Prefetch</h3>
+    @defer (on interaction; prefetch on hover) {
+        <app-defer-3/>
+    }
+    @placeholder {
+        <span>Placeholder (hover it, then click on it!)</span>
+    }
+    
+
+    <br><hr><br>
+    <h3>&#64;defer on viewport</h3>
+    @defer (on viewport){
+        <app-defer-2 text="The block entered the viewport"/>
+    }
+    @placeholder {
+        <span>Placeholder</span>
+    }
+
+
+    <br><hr><br>
+
+
+   <p>&#64;if - &#64;else</p> 
+   <br>
+@if (sinyal()) {
+    <div>Gel</div>
+    }
+    @else {
+    <div>Git</div>
+    }
+    
+    <br><hr><br>
+    
+    <p>&#64;switch - &#64;case</p> 
+    <br>
+    @switch (sinyal())
+    {
+    @case (true) {
+        Doğru
+    }
+    
+    @case (false) {
+        Yanlış
+    }
+    }
+    
+    <br>
+    <br>
+    <button (click)="sinyal.set(!sinyal())" class="btn btn-primary">Toggle</button>
