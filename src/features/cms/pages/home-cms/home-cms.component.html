@@ -1,54 +1,153 @@
-<h2><strong>Angular new control flows with new syntax:</strong></h2>
+<h3><strong>Angular new control flows with new syntax:</strong></h3>
 
-<p><strong>&#64;if - &#64;else</strong> <br>
-    Angularda döngü ve koşul yazmanın yeni şekli diyebiliriz. *ngFor *ngif gibi `structural directive`ler hala kullanılabiliyor. Bu yeni gelen yapılar sadece yeni kullanıcı dostu-“beginner-friendly” hale getiriyor.
+<p><strong class="text-primary">&#64;if - &#64;else</strong> <br>
+    We can say that it is the new way of writing loops and conditions in Angular. Structural directives such as *ngFor *ngif can still be used. <br>
+     These new structures only make the new user-friendly “beginner-friendly”.
+
+    <!-- Angularda döngü ve koşul yazmanın yeni şekli diyebiliriz. *ngFor *ngif gibi `structural directive`ler hala kullanılabiliyor. <br>
+    Bu yeni gelen yapılar sadece yeni kullanıcı dostu “beginner-friendly” hale getiriyor. -->
    </p> 
    <br>
+   <strong>Example 1:</strong> <br> 
     @if (sinyal()) {
-    <div>Gel</div>
+    <div>Come</div>
     }
     @else {
-    <div>Git</div>
+    <div>Go</div>
     }
-    
-    <br><hr><br>
 
-    <p>&#64;switch - &#64;case</p> 
     <br>
+    <strong>Example 2:</strong> <br>
+    <div> <input #checkbox type="checkbox" [checked]="isChecked()" (change)="isChecked.set(checkbox.checked)" id="checkbox" />
+        @if (isChecked()) {
+            <span>Checked</span>
+        }
+        @else {
+            <span>Not checked</span>
+        }
+    </div>
+
+    
+    <hr>
+
+    <p><strong class="text-primary">&#64;switch - &#64;case</strong></p> 
+    <strong>Example 1:</strong> <br> 
+    <div>
+        <div class="d-flex flex-row gap-1">
+            <input type="radio" [checked]="radioValue() === 1" (change)="radioValue.set(1)" id="radio1" />
+            <label for="radio1">1</label>
+        </div>
+        <div class="d-flex flex-row gap-1">
+            <input type="radio" [checked]="radioValue() === 2" (change)="radioValue.set(2)" id="radio2" />
+            <label for="radio2">2</label>
+        </div>
+        <div class="d-flex flex-row gap-1">
+            <input type="radio" [checked]="radioValue() === 3" (change)="radioValue.set(3)" id="radio3" />
+            <label for="radio3">3</label>
+        </div>
+        <div class="d-flex flex-row gap-1">
+            <input type="radio" [checked]="radioValue() === 4" (change)="radioValue.set(4)" id="radio4" />
+            <label for="radio4">4</label>
+        </div>
+    </div>
+
+    <div>
+        @switch (radioValue()) {
+            @case (1) {
+                <span>Chose 1</span>
+            }
+            @case (2) {
+                <span>Chose 2</span>
+            }
+            @case (3) {
+                <span>Chose 3</span>
+            }
+            @case (4) {
+                <span>Chose 4</span>
+            }
+            @default {
+                <span>Default chose (Not 1 or 2)</span>
+            }
+        }
+    </div>
+
+    <br><br>
+    <strong>Example 2:</strong> <br> 
     @switch (sinyal())
     {
     @case (true) {
-        Doğru
+        True
     }
     
     @case (false) {
-        Yanlış
+        False
     }
     }
     <br>
-    <br>
+    <hr>
 
     @if(num() === 0) {
-        <h2>Sıfır</h2>        
+        <h2>Zero</h2>        
     }
     @else if (num() %2) {
-        <h3>Çift Sayı</h3>
+        <h3>Even Number</h3>
     } @else {
-        <h3 class="text-danger">Tek Sayı</h3>
+        <h5 class="text-danger">Odd Number: {{num()}}</h5>
     }
     
-    <br>
     <br>
     <button (click)="sinyal.set(!sinyal())" class="btn btn-primary">Toggle</button>
 
 
-    <br><br>
+    <br>
+    <hr>
 
-    <h3>&#64;defer when</h3>
+    <p><strong class="text-primary">&#64;for</strong> <br>
+    <strong>Example 1:</strong> <br> 
+    <ul>
+        @for (
+            item of collection; track item.id; 
+            let index = $index, first = $first; 
+            let last = $last, even = $even, odd = $odd; 
+            let count = $count
+        ) 
+        {
+            <li>
+                <strong>{{item.name}}</strong>
+                index={{index}} 
+                first={{first}}
+                last={{last}} 
+                even={{even}} 
+                odd={{odd}} 
+                count={{count}}
+            </li>
+        }
+    </ul>
+
+    <strong>Example 2:</strong> <br> 
+    <ul>
+        @for (
+            item of emptyCollection; track item.id;
+            )
+            {
+                <li><strong>{{item.name}}</strong></li>
+            }
+        @empty
+            {
+                <span>The collection is empty</span>
+            }
+    </ul>
+
+    
+
+    <br>
+    <hr>
+    <p><strong class="text-primary">&#64;defer</strong></p> 
+    <h6>&#64;defer when</h6>
 
     <div>
         <input type="checkbox" #checkboxDefer [checked]="isCheckedDefer()" (change)="isCheckedDefer.set(checkboxDefer.checked)" id="checkboxDefer" />
-        <label for="checkboxDefer">Open the network tab of the browser's developer tools, then check this checkbox to load the <strong>app-c1</strong> component</label>
+        <label for="checkboxDefer"> Open the network tab of the browser's developer tools, then check this checkbox to load the <strong>defer</strong> component</label>
     </div>
 
     <br>
@@ -58,7 +157,7 @@
     }
 
     @placeholder {
-        <span>Placeholder</span>
+        <span>Choose</span>
     }
     @error {
         <span>error</span>  
@@ -69,29 +168,29 @@
 
     <br><hr><br>
 
-    <h3>&#64;defer in interaction</h3>
+    <h6>&#64;defer in interaction</h6>
     @defer (on interaction) {
         <span>Clicked</span>
     }
     @placeholder {
-        <span>Placeholder (click on it!)</span>
+        <span>Click on it!</span>
     }
 
     <br><hr><br>
 
 
-    <h3>&#64;defer on hover</h3>
+    <h6>&#64;defer on hover</h6>
     @defer (on hover) {
         <span>Hovered</span>
     }
     @placeholder {
-        <span>Placeholder (hover it!)</span>
+        <span>Hover it!</span>
     }
 
 
     <br><hr><br>
 
-    <h3>&#64;defer on idle</h3>
+    <h6>&#64;defer on idle</h6>
     @defer (on idle) {
         <span>Browser has reached an idle state</span>
     }
@@ -102,7 +201,7 @@
 
     <br><hr><br>
 
-    <h3>&#64;defer on timer(5s)</h3>
+    <h6>&#64;defer on timer (5s)</h6>
     @defer (on timer(5s)) {
         <span>Visible after 5s</span>
     }
@@ -112,17 +211,17 @@
 
 
     <br><hr><br>
-    <h3>Prefetch</h3>
+    <h6>Prefetch</h6>
     @defer (on interaction; prefetch on hover) {
         <app-defer-3/>
     }
     @placeholder {
-        <span>Placeholder (hover it, then click on it!)</span>
+        <span>Hover it, then click on it!</span>
     }
     
 
     <br><hr><br>
-    <h3>&#64;defer on viewport</h3>
+    <h6>&#64;defer on viewport</h6>
     @defer (on viewport){
         <app-defer-2 text="The block entered the viewport"/>
     }

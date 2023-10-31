@@ -13,8 +13,21 @@ import { Defer2Component } from "../../components/defer-2/defer-2.component";
 })
 export class HomeCmsComponent {
   sinyal = signal(false)
+  isChecked = signal(true)
 
-  num = signal(10)
+  num = signal(58)
 
   isCheckedDefer = signal(false);
+
+  collection = [
+    { id: 1, name: 'Item 1' },
+    { id: 2, name: 'Item 2' },
+    { id: 3, name: 'Item 3' }
+  ];
+
+  emptyCollection: any = [];
+
+  radioValue = signal(0);
+  
 }
+
