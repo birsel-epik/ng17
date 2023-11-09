@@ -1,235 +1,275 @@
 <h3><strong>Angular new control flows with new syntax:</strong></h3>
 
 <p><strong class="text-primary">&#64;if - &#64;else</strong> <br>
-    We can say that it is the new way of writing loops and conditions in Angular. Structural directives such as *ngFor *ngif can still be used. <br>
-     These new structures only make the new user-friendly “beginner-friendly”.
+  We can say that it is the new way of writing loops and conditions in Angular. Structural directives such as *ngFor
+  *ngIf can still be used. <br>
+  These new structures only make the new user-friendly “beginner-friendly”.
 
-    <!-- Angularda döngü ve koşul yazmanın yeni şekli diyebiliriz. *ngFor *ngif gibi `structural directive`ler hala kullanılabiliyor. <br>
-    Bu yeni gelen yapılar sadece yeni kullanıcı dostu “beginner-friendly” hale getiriyor. -->
-   </p> 
-   <br>
-   <strong>Example 1:</strong> <br> 
-    @if (sinyal()) {
-    <div>Come</div>
+  <!-- Angularda döngü ve koşul yazmanın yeni şekli diyebiliriz. *ngFor *ngIf gibi `structural directive`ler hala kullanılabiliyor. <br>
+  Bu yeni gelen yapılar sadece yeni kullanıcı dostu “beginner-friendly” hale getiriyor. -->
+</p>
+<br>
+<strong>Example 1:</strong> <br>
+@if (signal()) {
+  <div>Come</div>
+} @else {
+  <div>Go</div>
+}
+
+<br>
+<strong>Example 2:</strong> <br>
+<div><input #checkbox type="checkbox" [checked]="isChecked()" (change)="isChecked.set(checkbox.checked)" id="checkbox"/>
+  @if (isChecked()) {
+    <span>Checked</span>
+  } @else {
+    <span>Not checked</span>
+  }
+</div>
+
+
+<hr>
+
+<p><strong class="text-primary">&#64;switch - &#64;case</strong></p>
+<strong>Example 1:</strong> <br>
+<div>
+  <div class="d-flex flex-row gap-1">
+    <input type="radio" [checked]="radioValue() === 1" (change)="radioValue.set(1)" id="radio1"/>
+    <label for="radio1">1</label>
+  </div>
+  <div class="d-flex flex-row gap-1">
+    <input type="radio" [checked]="radioValue() === 2" (change)="radioValue.set(2)" id="radio2"/>
+    <label for="radio2">2</label>
+  </div>
+  <div class="d-flex flex-row gap-1">
+    <input type="radio" [checked]="radioValue() === 3" (change)="radioValue.set(3)" id="radio3"/>
+    <label for="radio3">3</label>
+  </div>
+  <div class="d-flex flex-row gap-1">
+    <input type="radio" [checked]="radioValue() === 4" (change)="radioValue.set(4)" id="radio4"/>
+    <label for="radio4">4</label>
+  </div>
+</div>
+
+<div>
+  @switch (radioValue()) {
+    @case (1) {
+      <span>Chose 1</span>
     }
-    @else {
-    <div>Go</div>
+    @case (2) {
+      <span>Chose 2</span>
     }
-
-    <br>
-    <strong>Example 2:</strong> <br>
-    <div> <input #checkbox type="checkbox" [checked]="isChecked()" (change)="isChecked.set(checkbox.checked)" id="checkbox" />
-        @if (isChecked()) {
-            <span>Checked</span>
-        }
-        @else {
-            <span>Not checked</span>
-        }
-    </div>
-
-    
-    <hr>
-
-    <p><strong class="text-primary">&#64;switch - &#64;case</strong></p> 
-    <strong>Example 1:</strong> <br> 
-    <div>
-        <div class="d-flex flex-row gap-1">
-            <input type="radio" [checked]="radioValue() === 1" (change)="radioValue.set(1)" id="radio1" />
-            <label for="radio1">1</label>
-        </div>
-        <div class="d-flex flex-row gap-1">
-            <input type="radio" [checked]="radioValue() === 2" (change)="radioValue.set(2)" id="radio2" />
-            <label for="radio2">2</label>
-        </div>
-        <div class="d-flex flex-row gap-1">
-            <input type="radio" [checked]="radioValue() === 3" (change)="radioValue.set(3)" id="radio3" />
-            <label for="radio3">3</label>
-        </div>
-        <div class="d-flex flex-row gap-1">
-            <input type="radio" [checked]="radioValue() === 4" (change)="radioValue.set(4)" id="radio4" />
-            <label for="radio4">4</label>
-        </div>
-    </div>
-
-    <div>
-        @switch (radioValue()) {
-            @case (1) {
-                <span>Chose 1</span>
-            }
-            @case (2) {
-                <span>Chose 2</span>
-            }
-            @case (3) {
-                <span>Chose 3</span>
-            }
-            @case (4) {
-                <span>Chose 4</span>
-            }
-            @default {
-                <span>Default chose (Not 1 or 2)</span>
-            }
-        }
-    </div>
-
-    <br><br>
-    <strong>Example 2:</strong> <br> 
-    @switch (sinyal())
-    {
-    @case (true) {
-        True
+    @case (3) {
+      <span>Chose 3</span>
     }
-    
-    @case (false) {
-        False
+    @case (4) {
+      <span>Chose 4</span>
     }
+    @default {
+      <span>Default chose (Not 1 or 2)</span>
     }
-    <br>
-    <hr>
+  }
+</div>
 
-    @if(num() === 0) {
-        <h2>Zero</h2>        
-    }
-    @else if (num() %2) {
-        <h3>Even Number</h3>
-    } @else {
-        <h5 class="text-danger">Odd Number: {{num()}}</h5>
-    }
-    
-    <br>
-    <button (click)="sinyal.set(!sinyal())" class="btn btn-primary">Toggle</button>
+<br><br>
+<strong>Example 2:</strong> <br>
+@switch (signal()) {
+  @case (true) {
+    True
+  }
+  @case (false) {
+    False
+  }
+}
+<br>
+<hr>
 
+@if (num() === 0) {
+  <h2>Zero</h2>
+} @else if (num() % 2) {
+  <h3>Even Number</h3>
+} @else {
+  <h5 class="text-danger">Odd Number: {{ num() }}</h5>
+}
 
-    <br>
-    <hr>
-
-    <p><strong class="text-primary">&#64;for</strong> <br>
-    <strong>Example 1:</strong> <br> 
-    <ul>
-        @for (
-            item of collection; track item.id; 
-            let index = $index, first = $first; 
-            let last = $last, even = $even, odd = $odd; 
-            let count = $count
-        ) 
-        {
-            <li>
-                <strong>{{item.name}}</strong>
-                index={{index}} 
-                first={{first}}
-                last={{last}} 
-                even={{even}} 
-                odd={{odd}} 
-                count={{count}}
-            </li>
-        }
-    </ul>
-
-    <strong>Example 2:</strong> <br> 
-    <ul>
-        @for (
-            item of emptyCollection; track item.id;
-            )
-            {
-                <li><strong>{{item.name}}</strong></li>
-            }
-        @empty
-            {
-                <span>The collection is empty</span>
-            }
-    </ul>
-
-    
-
-    <br>
-    <hr>
-    <p><strong class="text-primary">&#64;defer</strong></p> 
-    <h6>&#64;defer when</h6>
-
-    <div>
-        <input type="checkbox" #checkboxDefer [checked]="isCheckedDefer()" (change)="isCheckedDefer.set(checkboxDefer.checked)" id="checkboxDefer" />
-        <label for="checkboxDefer"> Open the network tab of the browser's developer tools, then check this checkbox to load the <strong>defer</strong> component</label>
-    </div>
-
-    <br>
-
-    @defer (when isCheckedDefer()) {
-        <app-defer/>
-    }
-
-    @placeholder {
-        <span>Choose</span>
-    }
-    @error {
-        <span>error</span>  
-    }
-    @loading(minimum 1s) {
-        <span>Loading...</span>
-    }
-
-    <br><hr><br>
-
-    <h6>&#64;defer in interaction</h6>
-    @defer (on interaction) {
-        <span>Clicked</span>
-    }
-    @placeholder {
-        <span>Click on it!</span>
-    }
-
-    <br><hr><br>
+<br>
+<button (click)="signal.set(!signal())" class="btn btn-primary">Toggle</button>
 
 
-    <h6>&#64;defer on hover</h6>
-    @defer (on hover) {
-        <span>Hovered</span>
-    }
-    @placeholder {
-        <span>Hover it!</span>
-    }
+<br>
+<hr>
+
+<p><strong class="text-primary">&#64;for</strong> <br>
+  <strong>Example 1:</strong> <br>
+<ul>
+  @for (item of collection;track item.id;let index = $index, first = $first;let last = $last, even = $even, odd = $odd;let count = $count) {
+    <li>
+      <strong>{{ item.name }}</strong>
+      index={{ index }}
+      first={{ first }}
+      last={{ last }}
+      even={{ even }}
+      odd={{ odd }}
+      count={{ count }}
+    </li>
+  }
+</ul>
+
+<strong>Example 2:</strong> <br>
+<ul>
+  @for (item of emptyCollection;track item.id;) {
+    <li><strong>{{ item.name }}</strong></li>
+  } @empty {
+    <span>The collection is empty</span>
+  }
+</ul>
 
 
-    <br><hr><br>
+<br>
+<hr>
+<p><strong class="text-primary">&#64;defer</strong></p>
+<h6>&#64;defer when</h6>
 
-    <h6>&#64;defer on idle</h6>
-    @defer (on idle) {
-        <span>Browser has reached an idle state</span>
-    }
-    @placeholder {
-        <span>Placeholder</span>
-    }
+<div>
+  <input type="checkbox" #checkboxDefer [checked]="isCheckedDefer()"
+         (change)="isCheckedDefer.set(checkboxDefer.checked)" id="checkboxDefer"/>
+  <label for="checkboxDefer"> Open the network tab of the browser's developer tools, then check this checkbox to load
+    the <strong>defer</strong> component</label>
+</div>
 
+<br>
 
-    <br><hr><br>
+@defer (when isCheckedDefer()) {
+  <app-defer/>
+} @placeholder {
+  <span>Choose</span>
+} @error {
+  <span>error</span>
+} @loading (minimum 1s) {
+  <span>Loading...</span>
+}
 
-    <h6>&#64;defer on timer (5s)</h6>
-    @defer (on timer(5s)) {
-        <span>Visible after 5s</span>
-    }
-    @placeholder {
-        <span>Placeholder</span>
-    }
+<br>
+<hr><br>
 
+<h6>&#64;defer in interaction</h6>
+@defer (on interaction) {
+  <span>Clicked</span>
+} @placeholder {
+  <span>Click on it!</span>
+}
 
-    <br><hr><br>
-    <h6>Prefetch</h6>
-    @defer (on interaction; prefetch on hover) {
-        <app-defer-3/>
-    }
-    @placeholder {
-        <span>Hover it, then click on it!</span>
-    }
-    
-
-    <br><hr><br>
-    <h6>&#64;defer on viewport</h6>
-    @defer (on viewport){
-        <app-defer-2 text="The block entered the viewport"/>
-    }
-    @placeholder {
-        <span>Placeholder</span>
-    }
+<br>
+<hr><br>
 
 
-    <br><hr><br>
+<h6>&#64;defer on hover</h6>
+@defer (on hover) {
+  <span>Hovered</span>
+} @placeholder {
+  <span>Hover it!</span>
+}
+
+
+<br>
+<hr><br>
+<strong>on idle</strong> — lazily load the block when the browser is not doing any heavy lifting
+<br>
+<strong>on immediate</strong> — start lazily loading automatically, without blocking the browser
+<br>
+<strong>on timer</strong> (< time >) — delay loading with a timer
+<br>
+<strong>on viewport ve on viewport</strong> (< ref >) — viewport also allows to specify a reference for an anchor element. When the anchor element is visible, Angular will lazily load the component and render it
+<br>
+<strong>on interaction ve on interaction</strong> (< ref >) — enables you to initiate lazy loading when the user interacts with a particular element
+<br>
+<strong>on hover ve on hover</strong> (< ref >) — triggers lazy loading when the user hovers an element
+<br>
+<strong>when</strong> (< expr >) — enables you to specify your own condition via an expression that returns a promise
+
+
+<!--
+<strong>timeout</strong> <expr> — Belirli bir süre sonra lazyload işlemini yapar.
+<br>
+<strong>immediate</strong> <expr> — Client render işlemi biter bitmez, yani ilk fırsatta yapılan event
+<br>
+<strong>viewport</strong> <expr> — Görünür alana girer girmez yapılır
+<br>
+<strong>when</strong> <expr> — beliri bir koşul gerçekleştiğinde (örneğin bir variable true oldu vs bknz modal visible)
+<br>
+<strong>interaction</strong> <expr> — Yani kullanıcı click, focus, touch ,input events (keydown, blur, vs) yaptığında gerçekleşen tetiklenme
+<br>
+bu eventler birlikte de kullanılabiliyor. yani when cond,timer(5) gibi harmanlanmış şekilde kullanabiliyoruz.
+
+<br><br>
+
+@defer (when cond) {
+<app-alert />
+}
+@loading {
+      Loading...
+} @placeholder {
+      Placeholder
+} @error {
+      Failed to load dependencies
+}
+
+Loading: Bağımlılıkların yüklenmesi aşamasında belirtilen içerik. <br>
+Placeholder: İçerik oluşturmayı tamamlayana kadar görüntülenecek icerik  <br>
+Error: paketin yüklenmesinde hata olursa görüntünecek içerik <br>
+
+<br><br>
+
+<strong>on idle</strong> — Tarayıcı herhangi bir ağır kaldırma işlemi yapmadığında bloğu tembel bir şekilde yükleyin.
+<br>
+<strong>on immediate</strong> — Tarayıcıyı engellemeden otomatik olarak yavaş yüklemeye başlayın.
+<br>
+<strong>on timer</strong> (<time>) — Bir zamanlayıcıyla yüklemeyi geciktirme.
+<br>
+<strong>on viewport ve on viewport</strong> (<ref>) — Görünüm aynı zamanda bir bağlantı elemanı için bir referans belirtmeye de olanak tanır. Bağlantı elemanı görünür olduğunda, Angular yavaş yavaş bileşeni yükleyecek ve oluşturacaktır.
+<br>
+<strong>on interaction ve on interaction</strong> (<ref>) — Kullanıcı belirli bir öğeyle etkileşime girdiğinde yavaş yüklemeyi başlatmanıza olanak tanır.
+<br>
+<strong>on hover ve on hover</strong> (<ref>) — Kullanıcı bir öğenin üzerine geldiğinde yavaş yüklemeyi tetikler.
+<br>
+<strong>when</strong> <expr> — Bir söz döndüren bir ifade aracılığıyla kendi durumunuzu belirlemenizi sağlar-->
+
+
+<h6>&#64;defer on idle</h6>
+@defer (on idle) {
+  <span>Browser has reached an idle state</span>
+} @placeholder {
+  <span>Placeholder</span>
+}
+
+
+<br>
+<hr><br>
+
+<h6>&#64;defer on timer (5s)</h6>
+@defer (on timer(5s)) {
+  <span>Visible after 5s</span>
+} @placeholder {
+  <span>Placeholder</span>
+}
+
+
+<br>
+<hr><br>
+<h6>Prefetch</h6>
+@defer (on interaction;prefetch on hover) {
+  <app-defer-3/>
+} @placeholder {
+  <span>Hover it, then click on it!</span>
+}
+
+
+<br>
+<hr><br>
+<h6>&#64;defer on viewport</h6>
+@defer (on viewport) {
+  <app-defer-2 text="The block entered the viewport"/>
+} @placeholder {
+  <span>Placeholder</span>
+}
 
 
